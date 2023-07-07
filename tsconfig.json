@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "rootDirs": ["src"],
+    "paths": {
+      "@schema/*": ["./schema/*"]
+    },
     "outDir": "dist",
     "lib": ["es2020"],
     "target": "es2020",
