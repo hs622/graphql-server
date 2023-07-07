@@ -1,13 +1,12 @@
 {
+  "include": ["modules.d.ts", "**/*.ts"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "rootDirs": ["src"],
-    "paths": {
-      "@schema/*": ["./schema/*"]
-    },
     "outDir": "dist",
     "lib": ["es2020"],
     "target": "es2020",
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "types": ["node"]

@@ -1,4 +1,4 @@
-export default [
+export const books = [
     {
         title: "The Awakening",
         author: "Kate Chopin",
