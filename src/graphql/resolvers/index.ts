@@ -1,4 +1,4 @@
-import authorReslover from './author';
+import authorReslover from './user';
 import bookReslover from './book';
 
 export const resolvers = {

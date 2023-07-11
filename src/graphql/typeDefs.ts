@@ -3,26 +3,31 @@ export const typeDefs = `#graphql
 
   type Query {
     book(title: String!): Book
-    books: [Book]!
-    author(first_name: String!): Author
-    authorById(id: Int!): Author
-    authors: [Author]
+    books: [Book]
+    user(first_name: String!): User
+    userById(id: Int!): User
+    users: [User]
   }
 
   type Book {
-    id: Int, 
+    id: Int,
     title: String,
-    authorId: Int,
-    author: Author
+    description: String,
+    releaseYear: String,
+    publisher: String,
+    totalNoOfPage: Int
   }
 
-  type Author {
+  type User {
     id: Int,
     first_name: String,
     last_name: String,
     email: String,
-    numberOfBooks: Int,
-    books: [Book]
+    password: String,
+    role: String,
+    country: String
+    countryCode: Int,
+    number: Int 
   }
 
 `;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface User {
+export interface IUser {
     first_name: string,
     last_name: string,
     email: string,
@@ -11,7 +11,7 @@ interface User {
     number: number 
 }
 
-const bookSchema = new mongoose.Schema<User> ({
+export const userSchema = new mongoose.Schema<IUser> ({
     first_name: { type: String, required: true },
     last_name: { type: String },
     email: { type: String, lowercase: true, trim: true, required: true },
@@ -24,6 +24,6 @@ const bookSchema = new mongoose.Schema<User> ({
   },
   { 
     versionKey: false, 
-    timestamps: true,
+    timestamps: true
   }
 );

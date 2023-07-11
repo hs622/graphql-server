@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface Book {
+export interface IBook {
     title: string,
     description: string,
     releaseYear: string,
@@ -8,12 +8,15 @@ interface Book {
     totalNoOfPage: number
 }
 
-const bookSchema = new mongoose.Schema<Book> ({
+export const bookSchema = new mongoose.Schema<IBook> ({
     title: String,
     description: String,
     releaseYear: String,
     publisher: String,
     totalNoOfPage: Number
   },
-  { versionKey: false, }
+  { 
+    versionKey: false,
+    timestamps: true
+  }
 );
