@@ -12,6 +12,16 @@ export default {
                 }
             });
         },
-        book: (_: any, args: any) => books.find((book) => book.title === args.title),
+        book: (_: any, args: any) => {
+            return books.find((book) => {
+                if(book.title === args.title) {
+                    let author = authors.find(author => author.id === book.authorId)
+                    return {
+                        ...book,
+                        author
+                    }
+                }
+            }) 
+        },
     }
 }
