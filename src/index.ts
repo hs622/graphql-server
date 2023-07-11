@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs, resolvers } from "./graphql";
-import { db } from './config/connection';
+import { createConnection } from './config';
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
@@ -13,7 +13,9 @@ const bootstrap = async (): Promise<bootstrap> => {
   const { url } = await startStandaloneServer(server, {
     listen: { port: 4000 },
   });
-  db.createConnection('asdasd');
+  await createConnection('mongodb+srv://hussain:admin622@mycluster.j9x9zgh.mongodb.net/', {
+    dbname: 'library_db',
+  });
 
   return {
     url
@@ -24,5 +26,5 @@ bootstrap()
 .then((res) => {
   
   console.log(`🚀 Server ready at: ${res.url}`);
-  // console.log(`🚀 Database is connected`);
+  console.log(`🚀 Database is connected`);
 });

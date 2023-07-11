@@ -1,37 +1,19 @@
-export const books = [
-    {
-        id: 1,
-        title: "book6",
-        authorId: 1,
-    },
-    {
-        id: 2,
-        title: "book5",
-        authorId: 1
-    },
-    {
-        id: 3,
-        title: "book4",
-        authorId: 1
-    },
-    {
-        id: 4,
-        title: "book1",
-        authorId: 1
-    },
-    {
-        id: 5,
-        title: "book2",
-        authorId: 1
-    },
-    {
-        id: 6,
-        title: "book3",
-        authorId: 1
-    },
-    {
-        id: 7,
-        title: "book6",
-        authorId: 2
-    },
-];
+import mongoose from "mongoose";
+
+interface Book {
+    title: string,
+    description: string,
+    releaseYear: string,
+    publisher: string,
+    totalNoOfPage: number
+}
+
+const bookSchema = new mongoose.Schema<Book> ({
+    title: String,
+    description: String,
+    releaseYear: String,
+    publisher: String,
+    totalNoOfPage: Number
+  },
+  { versionKey: false, }
+);
