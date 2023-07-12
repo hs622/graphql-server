@@ -1,16 +1,19 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const createConnection = async (uri: string, options: {dbname: string} ): Promise<typeof mongoose> => {
-    return await mongoose.connect(uri+options.dbname);
+interface DBO {
+  username: String;
+  password: String;
+  dbname: String;
 }
 
-const checkConnection = () => {}
-const closeConnection = () => {} 
-
-
-
-export {
-    createConnection,
-    checkConnection,
-    closeConnection,
-}
+export const createConnection = async (
+  options: DBO
+): Promise<typeof mongoose> => {
+  return await mongoose
+    .connect(
+      "mongodb+srv://" + options.username + ":" + options.password + "@mycluster.j9x9zgh.mongodb.net/" + options.dbname
+    )
+    .catch((err) => {
+      throw err;
+    });
+};

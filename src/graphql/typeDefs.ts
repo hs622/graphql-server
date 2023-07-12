@@ -1,33 +1,65 @@
-
 export const typeDefs = `#graphql
 
   type Query {
     book(title: String!): Book
     books: [Book]
-    user(first_name: String!): User
+    userByName(first_name: String!): User
     userById(id: Int!): User
     users: [User]
   }
-
+  
   type Book {
-    id: Int,
+    _id: ID,
     title: String,
     description: String,
-    releaseYear: String,
     publisher: String,
-    totalNoOfPage: Int
+    releaseYear: Int,
+    totalNoOfPage: Int,
+    createdAt: String,
+    updatedAt: String
   }
 
   type User {
-    id: Int,
+    _id: ID,
     first_name: String,
     last_name: String,
     email: String,
     password: String,
-    role: String,
+    role: Role,
     country: String
     countryCode: Int,
-    number: Int 
+    number: String,
+    createdAt: String,
+    updatedAt: String
   }
 
+  type Mutation {
+    createUser(user: UserInput): User
+    createBook(book: BookInput): Book
+    updateBook(_id: ID, book: BookInput): Book
+  }
+
+  input UserInput {
+    first_name: String!,
+    last_name: String,
+    email: String!,
+    password: String!,
+    role: Role!,
+    country: String!
+    countryCode: Int,
+    number: String
+  }
+
+  input BookInput {
+    title: String!,
+    description: String!,
+    publisher: String!,
+    releaseYear: Int!,
+    totalNoOfPage: Int
+  }
+  
+  enum Role {
+    ADMIN,
+    AUTHOR
+  }
 `;
